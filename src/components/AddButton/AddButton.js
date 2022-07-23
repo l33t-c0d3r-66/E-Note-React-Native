@@ -1,9 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
-const AddButton = () => {
+const AddButton = (props) => {
+
+    const addButtonHandler = () => {
+        props.navigation.navigate('Add');
+    }
+
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={addButtonHandler}>
             <Text style={styles.add}>+</Text>
         </TouchableOpacity>
     );

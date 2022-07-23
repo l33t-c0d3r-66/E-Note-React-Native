@@ -3,12 +3,12 @@ import { StyleSheet, View, Text } from 'react-native';
 import NoteItem from '../NoteItem/NoteItem';
 import CustomTextInput from '../CustomTextInput/CustomTextInput';
 import AddButton from '../AddButton/AddButton';
-const Notes = () => {
+const Notes = (props) => {
     return (
         <View style={styles.notesWrapper}>
           <View style={styles.topBar}>
             <CustomTextInput />
-            <AddButton />
+            <AddButton navigation={props.navigation}/>
           </View>
           <View style={styles.items}>
             <NoteItem title="Hello" description="Hello World Hello World Hello World fjkasjddsfkdsakjfksdjflkjdsalkfjdsaljfljdsalfjlkflkjdsalkfjdsafjlkdsjflkajdflkjdsalkfj"/>
