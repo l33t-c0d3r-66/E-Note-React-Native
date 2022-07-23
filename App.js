@@ -12,7 +12,7 @@ class App extends Component {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Notes">
           <Stack.Screen name="Notes" component={NotesScreen}/>
-          <Stack.Screen name="Add" component={AddNoteScreen}/>
+          <Stack.Screen name="Add" component={AddNoteScreen} options={{ title: 'Add Note' }}/>
         </Stack.Navigator>
       </NavigationContainer>
     );

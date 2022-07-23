@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 const AddButton = (props) => {
 
     const addButtonHandler = () => {
-        props.navigation.navigate('Add');
+        props.navigation.navigate('Add', {myName: 'Add Note'});
     }
 
     return (
