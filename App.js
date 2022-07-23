@@ -1,23 +1,24 @@
 import React, {Component} from 'react';
-import { View, StyleSheet } from 'react-native';
-import Notes from './src/components/Notes/Notes';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import NotesScreen from './src/screens/NotesScreen';
+import AddNoteScreen from './src/screens/AddNoteScreen';
 
 class App extends Component {
 
   render () {
+    const Stack =  createNativeStackNavigator();
     return (
-      <View style={styles.container}>
-        <Notes />
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Notes">
+          <Stack.Screen name="Notes" component={NotesScreen}/>
+          <Stack.Screen name="Add" component={AddNoteScreen}/>
+        </Stack.Navigator>
+      </NavigationContainer>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container : {
-    flex: 1,
-    backgroundColor: "#E8EAED",
-  },
-});
+
 
 export default App;
