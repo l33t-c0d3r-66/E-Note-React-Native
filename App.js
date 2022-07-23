@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { View, StyleSheet } from 'react-native';
-import NoteItem from './src/components/NoteItem/NoteItem';
 import Notes from './src/components/Notes/Notes';
 
 class App extends Component {
