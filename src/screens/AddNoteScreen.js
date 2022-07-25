@@ -1,11 +1,17 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { View, StyleSheet, Button, Image } from 'react-native';
 
 import CustomTextInput from '../components/CustomTextInput/CustomTextInput';
 import CustomTextArea from '../components/CustomTextArea/CustomTextArea';
 import CustomComboBox from '../components/CustomComboBox/CustomComboBox';
+import CustomButton from '../components/CustomButton/CustomButton';
 
 const AddNoteScreen = () => {
+
+    const onPressHandler = () => {
+
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.imageContiner}>
@@ -15,7 +21,7 @@ const AddNoteScreen = () => {
                 <CustomTextInput placeholder="Enter Note Title" />
                 <CustomComboBox placeholder="Select Type"/>
                 <CustomTextArea style={styles.textArea} placeholder="Enter Description" />
-                
+                <CustomButton text="Save Note" onAdd={onPressHandler}/>
             </View>   
         </View>
     );
@@ -43,7 +49,7 @@ const styles = StyleSheet.create({
     image: {
         width: 130, 
         resizeMode: 'contain',
-    }
+    },
   });
 
   export default AddNoteScreen;
