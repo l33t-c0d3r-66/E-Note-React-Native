@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, Image } from 'react-native';
 
 import CustomTextInput from '../components/CustomTextInput/CustomTextInput';
 import CustomTextArea from '../components/CustomTextArea/CustomTextArea';
+import CustomComboBox from '../components/CustomComboBox/CustomComboBox';
 
 const AddNoteScreen = () => {
     return (
@@ -12,7 +13,9 @@ const AddNoteScreen = () => {
             </View>
             <View style={styles.textInputContainer}>
                 <CustomTextInput placeholder="Enter Note Title" />
+                <CustomComboBox placeholder="Select Type"/>
                 <CustomTextArea style={styles.textArea} placeholder="Enter Description" />
+                
             </View>   
         </View>
     );

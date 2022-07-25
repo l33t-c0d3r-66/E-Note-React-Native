@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextInput, View, StyleSheet } from 'react-native';
 
-const CustomTextInput = (props) => {
+const CustomTextArea = (props) => {
     return (
         <View style={[styles.container, props.style]}>
             <TextInput style={styles.textInput} placeholder={props.placeholder} multiline={true} numberOfLines={4}/>
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default CustomTextInput;
+export default CustomTextArea;
