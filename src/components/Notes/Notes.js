@@ -7,7 +7,7 @@ const Notes = (props) => {
     return (
         <View style={styles.notesWrapper}>
           <View style={styles.topBar}>
-            <CustomTextInput />
+            <CustomTextInput placeholder="Search here" />
             <AddButton navigation={props.navigation}/>
           </View>
           <View style={styles.items}>

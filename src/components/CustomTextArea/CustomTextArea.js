@@ -3,8 +3,8 @@ import { TextInput, View, StyleSheet } from 'react-native';
 
 const CustomTextInput = (props) => {
     return (
-        <View style={styles.container}>
-            <TextInput style={styles.textInput} placeholder={props.placeholder}/>
+        <View style={[styles.container, props.style]}>
+            <TextInput style={styles.textInput} placeholder={props.placeholder} multiline={true} numberOfLines={4}/>
         </View>
     );
 };
@@ -14,13 +14,13 @@ const styles = StyleSheet.create({
         width: '85%',
     },
     textInput : {
-        paddingVertical: 5,
         paddingHorizontal: 20,
         backgroundColor: "#FFF",
-        borderRadius: 60,
-        borderColor: "#C0C0C0",
-        borderWidth: 1,
+        borderRadius: 10,
+        borderColorBottom: "#C0C0C0",
+        borderBottomWidth: 1,
         width: "100%",
+        maxHeight: 120
     },
 });
 
