@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import NoteItem from '../NoteItem/NoteItem';
 import CustomTextInput from '../CustomTextInput/CustomTextInput';
@@ -8,16 +8,14 @@ const Notes = (props) => {
         {title: 'Note Title', description: 'Notes Description', type: 'work'},
     ];
 
-    const addNote = () => {
-        
-    }
-
+    //use Effect to Call Here.
 
     return (
+        
         <View style={styles.notesWrapper}>
           <View style={styles.topBar}>
             <CustomTextInput placeholder="Search here" />
-            <AddButton navigation={props.navigation}/>
+            <AddButton navigation={props.navigation} />
           </View>
           <View style={styles.items}>
             {notes.map((note, index) => (<NoteItem key={index} title={note.title} description={note.description} type={note.type}  />))}

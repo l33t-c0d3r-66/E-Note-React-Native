@@ -18,9 +18,9 @@ const AddNoteScreen = (props) => {
             type: type
         }
 
-        alert(note.description+ " "+ note.title+ " "+ note.type);
+        // Firebase to Add Here
 
-        
+        props.navigation.navigate("Notes");
     }
 
     return (
