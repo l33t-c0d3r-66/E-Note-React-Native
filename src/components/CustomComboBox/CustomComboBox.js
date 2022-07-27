@@ -14,6 +14,10 @@ const CustomComboBox = (props) => {
       {label: 'Study', value: 'study'},
     ]);
 
+    const onChangeHandler = () => {
+      props.setComboValue(value);
+    }
+
     return (
       <View style={styles.container}>
         <DropDownPicker style={styles.dropDown}
@@ -24,6 +28,7 @@ const CustomComboBox = (props) => {
             setOpen={setOpen}
             setValue={setValue}
             setItems={setItems}
+            onChangeValue={onChangeHandler}
         />
       </View>
     );

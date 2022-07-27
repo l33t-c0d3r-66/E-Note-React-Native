@@ -1,10 +1,18 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import { TextInput, View, StyleSheet } from 'react-native';
 
 const CustomTextInput = (props) => {
+    const [text, setText] = useState('');
+    const onChangeHandler = (newText) => {
+        setText(newText);
+        props.setInput(newText);
+    }
+
     return (
         <View style={styles.container}>
-            <TextInput style={styles.textInput} placeholder={props.placeholder}/>
+            <TextInput style={styles.textInput} placeholder={props.placeholder}   
+                onChangeText={newText => onChangeHandler(newText)}
+                defaultValue={text}/>
         </View>
     );
 };

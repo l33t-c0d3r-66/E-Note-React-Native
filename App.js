@@ -6,6 +6,7 @@ import AddNoteScreen from './src/screens/AddNoteScreen';
 
 class App extends Component {
 
+
   render () {
     const Stack =  createNativeStackNavigator();
     return (

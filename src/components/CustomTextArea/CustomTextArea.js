@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { TextInput, View, StyleSheet } from 'react-native';
 
 const CustomTextArea = (props) => {
+
+    const [text, setText] = useState('');
+    const onChangeHandler = (newText) => {
+        setText(newText);
+        props.setInput(newText);
+    }
+
+
     return (
         <View style={[styles.container, props.style]}>
-            <TextInput style={styles.textInput} placeholder={props.placeholder} multiline={true} numberOfLines={4}/>
+            <TextInput style={styles.textInput} placeholder={props.placeholder} 
+                multiline={true} numberOfLines={4} 
+                onChangeText={newText => onChangeHandler(newText)}
+                defaultValue={text} />
         </View>
     );
 };
