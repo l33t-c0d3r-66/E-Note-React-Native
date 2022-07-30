@@ -12,7 +12,7 @@ const CustomTextInput = (props) => {
         <View style={styles.container}>
             <TextInput style={styles.textInput} placeholder={props.placeholder}   
                 onChangeText={newText => onChangeHandler(newText)}
-                defaultValue={text}/>
+                defaultValue={props.value || text}/>
         </View>
     );
 };

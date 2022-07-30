@@ -24,6 +24,11 @@ const Notes = (props) => {
             console.log(error);
         });
     },[notes]);
+
+    const editNote = (key) => {
+        props.navigation.navigate("View", {key: key});
+    }
+
     return (
 
         <View style={styles.notesWrapper}>
@@ -32,7 +37,7 @@ const Notes = (props) => {
             <AddButton navigation={props.navigation}/>
           </View>
           <ScrollView style={styles.items}>
-            {notes.length>0?notes.map((note, index) => (<NoteItem key={note.key} title={note.title} description={notes[index].description} type={notes[index].type}  />)): null}
+            {notes.length>0?notes.map((note, index) => (<NoteItem key={note.key} title={note.title} description={notes[index].description} type={notes[index].type} onClick={() => editNote(note.key)} />)): null}
           </ScrollView>
         </View>
     );

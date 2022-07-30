@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProgressViewIOSComponent, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const NoteItem =  (props) => {
     const colors = {
@@ -17,8 +17,9 @@ const NoteItem =  (props) => {
         color = colors["others"];
     }
 
+
     return (
-        <View style={styles.item}>
+        <TouchableOpacity style={styles.item} onPress={props.onClick}>
             <View style={styles.itemLeft}>
                 <View style={styles.wrapper}>
                     <Text style={styles.title}>{props.title.length>15? props.title.substring(0,15)+"...": props.title}</Text>
@@ -28,7 +29,7 @@ const NoteItem =  (props) => {
                 </View>
             </View>
             <View style={[styles.circular, {backgroundColor: color, borderColor: color}]}></View>
-        </View>
+        </TouchableOpacity >
     );
 }
 

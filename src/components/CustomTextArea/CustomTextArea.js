@@ -15,7 +15,7 @@ const CustomTextArea = (props) => {
             <TextInput style={styles.textInput} placeholder={props.placeholder} 
                 multiline={true} numberOfLines={4} 
                 onChangeText={newText => onChangeHandler(newText)}
-                defaultValue={text} />
+                defaultValue={props.value || text} />
         </View>
     );
 };

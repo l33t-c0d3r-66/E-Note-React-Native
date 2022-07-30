@@ -23,7 +23,7 @@ const CustomComboBox = (props) => {
         <DropDownPicker style={styles.dropDown}
             placeholder={props.placeholder}
             open={open}
-            value={value}
+            value={props.value || value}
             items={items}
             setOpen={setOpen}
             setValue={setValue}
