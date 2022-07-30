@@ -6,6 +6,9 @@ import AddButton from '../AddButton/AddButton';
 
 const Notes = (props) => {
     const [notes, setNotes] = useState([]);
+    const [filteredNotes, setFilteredNotes] = useState([]);
+    const [search, setSearch] = useState("");
+
     useEffect(function(){
         fetch("https://react-native-projects-4701f-default-rtdb.firebaseio.com/notes.json")
         .then(response => {
@@ -20,24 +23,42 @@ const Notes = (props) => {
                 notesFromFirebase.push(note);
             });
             setNotes(notesFromFirebase);
+            searchNotes();
         }).catch(error => {
             console.log(error);
         });
     },[notes]);
 
+    const searchNotes = () => {
+        if(search === undefined || search === "") {
+            setFilteredNotes(notes);
+        } else {
+            const update = notes.filter(note => {
+                return note.title.toLowerCase().includes(search);
+            });
+            setFilteredNotes(update);
+        }
+    }
+
+    useEffect(function() {
+        searchNotes();
+    }, [search]);
+
     const editNote = (key) => {
         props.navigation.navigate("View", {key: key});
     }
+
+
 
     return (
 
         <View style={styles.notesWrapper}>
           <View style={styles.topBar}>
-            <CustomTextInput placeholder="Search here" />
+            <CustomTextInput placeholder="Search here" setInput={setSearch}/>
             <AddButton navigation={props.navigation}/>
           </View>
           <ScrollView style={styles.items}>
-            {notes.length>0?notes.map((note, index) => (<NoteItem key={note.key} title={note.title} description={notes[index].description} type={notes[index].type} onClick={() => editNote(note.key)} />)): null}
+            {filteredNotes.length>0?filteredNotes.map((note, index) => (<NoteItem key={note.key} title={note.title} description={notes[index].description} type={notes[index].type} onClick={() => editNote(note.key)} />)): null}
           </ScrollView>
         </View>
     );
