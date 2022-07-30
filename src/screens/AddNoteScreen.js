@@ -19,6 +19,19 @@ const AddNoteScreen = (props) => {
         }
 
         // Firebase to Add Here
+        fetch("https://react-native-projects-4701f-default-rtdb.firebaseio.com/notes.json",
+            {
+                method: "POST",
+                body: JSON.stringify(note),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        ).then((response)=> {
+            return response.json();
+        }).then(res=> {
+            console.log(res);
+        });
 
         props.navigation.navigate("Notes");
     }

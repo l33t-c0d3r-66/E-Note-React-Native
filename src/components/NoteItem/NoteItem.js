@@ -2,19 +2,32 @@ import React from 'react';
 import { ProgressViewIOSComponent, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const NoteItem =  (props) => {
+    const colors = {
+        "work": "#FFC18E",
+        "personal": "#CA4E79",
+        "family": "#AF7AB3",
+        "study": "#FBB454",
+        "others": "#55BCF6",
+    }
+    let color = "";
+
+    if(colors[props.type]) {
+        color = colors[props.type];
+    } else {
+        color = colors["others"];
+    }
 
     return (
         <View style={styles.item}>
             <View style={styles.itemLeft}>
-                <View style={[styles.square, {backgroundColor: props.color || "#55BCF6"}]}></View>
                 <View style={styles.wrapper}>
-                    <Text style={styles.title}>{props.title}</Text>
+                    <Text style={styles.title}>{props.title.length>15? props.title.substring(0,15)+"...": props.title}</Text>
                     <Text style={styles.description}>
                         {props.description.length > 50? props.description.substring(0, 50)+"...": props.description}
                     </Text>
                 </View>
             </View>
-            <View style={[styles.circular, {backgroundColor: props.color || "#55BCF6"}]}></View>
+            <View style={[styles.circular, {backgroundColor: color, borderColor: color}]}></View>
         </View>
     );
 }
@@ -27,35 +40,28 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginBottom: 20
+        marginBottom: 20,
+        maxHeight: 120
     },
     itemLeft: {
         flexDirection: 'row',
         alignItems: 'center',
-    },
-    square: {
-        width: 60,
-        height: 60,
-        opacity: 0.4,
-        borderRadius: 5,
-        marginRight: 10,
     },
     wrapper: {
         flexDirection: 'column',
     },  
     title: {
         maxWidth: "80%",
-        fontSize: 15,
+        fontSize: 16,
         fontWeight: 'bold'
     },
     description: {
-        maxWidth:'80%',
-
+        maxWidth:'90%',
+        flexWrap: 'wrap'
     },
     circular: {
         height: 20,
         width: 20,
-        borderColor: "#55BCF6",
         borderWidth: 2,
         borderRadius: 10,
     }

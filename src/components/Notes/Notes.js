@@ -1,25 +1,39 @@
-import React, {useState} from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import NoteItem from '../NoteItem/NoteItem';
 import CustomTextInput from '../CustomTextInput/CustomTextInput';
 import AddButton from '../AddButton/AddButton';
+
 const Notes = (props) => {
-    const notes = [
-        {title: 'Note Title', description: 'Notes Description', type: 'work'},
-    ];
-
-    //use Effect to Call Here.
-
+    const [notes, setNotes] = useState([]);
+    useEffect(function(){
+        fetch("https://react-native-projects-4701f-default-rtdb.firebaseio.com/notes.json")
+        .then(response => {
+            return response.json();
+        }).then(res => {
+            const notesFromFirebase = [];
+            Object.keys(res).forEach((key) => {
+                const note = {
+                    key: key,
+                    ...res[key]
+                }
+                notesFromFirebase.push(note);
+            });
+            setNotes(notesFromFirebase);
+        }).catch(error => {
+            console.log(error);
+        });
+    },[notes]);
     return (
-        
+
         <View style={styles.notesWrapper}>
           <View style={styles.topBar}>
             <CustomTextInput placeholder="Search here" />
-            <AddButton navigation={props.navigation} />
+            <AddButton navigation={props.navigation}/>
           </View>
-          <View style={styles.items}>
-            {notes.map((note, index) => (<NoteItem key={index} title={note.title} description={note.description} type={note.type}  />))}
-          </View>
+          <ScrollView style={styles.items}>
+            {notes.length>0?notes.map((note, index) => (<NoteItem key={note.key} title={note.title} description={notes[index].description} type={notes[index].type}  />)): null}
+          </ScrollView>
         </View>
     );
 };
@@ -47,6 +61,7 @@ const styles = StyleSheet.create({
     },
     items: {
         marginTop: 50,
+        paddingHorizontal: 10
     },
 });
 
